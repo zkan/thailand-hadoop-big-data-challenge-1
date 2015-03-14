@@ -23,5 +23,8 @@ for line in reader:
     key = carrier_id + '-' + month
     arrival_delay = line[14]
 
+    if arrival_delay == 'NA':
+        continue
+
     record = [key, arrival_delay]
     writer.writerow(record)
