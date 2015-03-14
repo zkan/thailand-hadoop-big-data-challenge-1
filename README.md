@@ -424,3 +424,23 @@ YAK,5.70170454545,6.55681818182
 YKM,5.44510385757,1.14540059347
 YUM,3.3966657846,2.88171473935
 ```
+
+## Best Day to Travel?
+
+**On Local:** `cat data/2008_with_1000_first_records.csv | python code/best_day_to_travel_mapper.py | sort | python code/best_day_to_travel_reducer.py`
+
+**On Hadoop:** `hadoop jar ~/contrib/streaming/hadoop-streaming.jar -file best_day_to_travel_mapper.py -mapper best_day_to_travel_mapper.py -file best_day_to_travel_reducer.py -reducer best_day_to_travel_reducer.py -input /user/Kan/data/2008.csv -jobconf mapred.reduce.tasks=1 -output /user/Kan/best_day_to_travel_results`
+
+*Note:* The command above is run under the same directory with the code.
+
+**Results from Hadoop:**
+
+```
+1,8.21085049486,10.2226107893
+2,7.48120760404,8.91644565762
+3,6.52201731572,8.23387332288
+4,8.41159915808,9.73943693983
+5,10.9534400796,12.1011089613
+6,5.78966641043,8.60527194376
+7,9.49588600678,11.5231982781
+```
