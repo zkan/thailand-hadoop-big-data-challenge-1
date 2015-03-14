@@ -12,16 +12,17 @@ old_key = None
 for line in reader:
     if len(line) > 0:
         this_key = line[0]
-        destination = line[1]
-        distance = line[2]
+        distance = line[1]
 
         if old_key and old_key != this_key:
-            results = [old_key, destination, distance]
+            origin, destination = old_key.split('-')
+            results = [origin, destination, distance]
             writer.writerow(results)
 
         old_key = this_key
 
 
 if old_key != None:
-    results = [old_key, destination, distance]
+    origin, destination = old_key.split('-')
+    results = [origin, destination, distance]
     writer.writerow(results)

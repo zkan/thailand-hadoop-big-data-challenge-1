@@ -14,7 +14,8 @@ for line in reader:
 
     origin = line[16]
     destination = line[17]
+    key = origin + '-' + destination
     distance = line[18]
 
-    record = [origin, destination, distance]
+    record = [key, distance]
     writer.writerow(record)
