@@ -107,6 +107,20 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Best Day to Travel?</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="best-day-to-travel-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -151,6 +165,27 @@ var chart = c3.generate({
             ["Airport", "PUB", "ACK", "OTH", "CEC", "PIR", "AKN", "SPI", "TEX", "LMT", "ITH", "EWR", "EYW", "CIC", "EGE", "DLG", "STX", "ORD", "MIA", "RDD", "ACV", ],
             ["Average Arrival Delay", 74.0, 28.6038186158, 26.3810483871, 24.6709486166, 23.8, 22.0446428571, 21.9506726457, 20.3790849673, 20.3237704918, 17.8583333333, 17.0833913115, 16.8706720978, 16.75, 16.2909766813, 16.1711711712, 16.0211764706, 15.8874895749, 15.0649879862, 14.9627821843, 14.8621462595, ],
             ["Average Departure Delay", 27.0, 29.8544152745, 21.5907258065, 24.2223320158, 22.8, 21.8839285714, 22.3219730942, 15.8562091503, 19.6905737705, 8.76666666667, 18.2574904055, 15.3431771894, 17.1830882353, 16.126394052, 16.4954954955, 14.3670588235, 17.215613594, 15.8153613871, 16.1079926785, 15.1389745027, ],
+        ],
+        type: "bar",
+        groups: [
+            ["Average Arrival Delay", "Average Departure Delay"]
+        ]
+    },
+    axis: {
+        x: {
+            type: "categorized",
+        }
+    }
+});
+
+var chart = c3.generate({
+    bindto: "#best-day-to-travel-chart",
+    data: {
+        x: "Day of Week",
+        columns: [
+            ["Day of Week", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+            ["Average Arrival Delay", 8.21085049486, 7.48120760404, 6.52201731572, 8.41159915808, 10.9534400796, 5.78966641043, 9.49588600678, ],
+            ["Average Departure Delay", 10.2226107893, 8.91644565762, 8.23387332288, 9.73943693983, 12.1011089613, 8.60527194376, 11.5231982781, ],
         ],
         type: "bar",
         groups: [
