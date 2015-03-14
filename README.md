@@ -10,6 +10,8 @@ Special thanks to [IMC Institute](http://www.imcinstitute.com/) who organized th
 
 **On Hadoop:** `hadoop jar ~/contrib/streaming/hadoop-streaming.jar -file top_airlines_mapper.py -mapper top_airlines_mapper.py -file top_airlines_reducer.py -reducer top_airlines_reducer.py -input /user/Kan/data/2008.csv -jobconf mapred.reduce.tasks=1 -output /user/Kan/top_airlines_results_01`
 
+*Note:* The command above is run under the same directory with the code.
+
 **Results from Hadoop:**
 
 ```
