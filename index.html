@@ -82,11 +82,27 @@
             <div class="row">
                 <div class="col-md-12">
                     <h3>Average Arrival Delay in Each Month</h3>
+                    <p>From the top 5 airlines, show arrival delay for each of them.</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div id="chart"></div>
+                    <div id="top-airlines-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Average Arrival Delay and Averange Departure Delay at Each Airport</h3>
+                    <p>Show 20 airports based on the averange arrival delay.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="origin-airports-chart"></div>
                 </div>
             </div>
         </div>
@@ -98,7 +114,7 @@
 <script src="c3/c3.min.js"></script>
 <script>
 var chart = c3.generate({
-    bindto: '#chart',
+    bindto: '#top-airlines-chart',
     data: {
         x: 'x',
         xFormat: '%Y-%d-%m',
@@ -113,10 +129,6 @@ var chart = c3.generate({
     },
     axis: {
         x: {
-            label: {
-                text: 'Month',
-                position: 'outer-center'
-            },
             type: 'timeseries',
             tick: {
                 format: '%b'
@@ -127,6 +139,27 @@ var chart = c3.generate({
                 text: 'Average Arrival Delay',
                 position: 'outer-middle'
             },
+        }
+    }
+});
+
+var chart = c3.generate({
+    bindto: "#origin-airports-chart",
+    data: {
+        x: "Airport",
+        columns: [
+            ["Airport", "PUB", "ACK", "OTH", "CEC", "PIR", "AKN", "SPI", "TEX", "LMT", "ITH", "EWR", "EYW", "CIC", "EGE", "DLG", "STX", "ORD", "MIA", "RDD", "ACV", ],
+            ["Average Arrival Delay", 74.0, 28.6038186158, 26.3810483871, 24.6709486166, 23.8, 22.0446428571, 21.9506726457, 20.3790849673, 20.3237704918, 17.8583333333, 17.0833913115, 16.8706720978, 16.75, 16.2909766813, 16.1711711712, 16.0211764706, 15.8874895749, 15.0649879862, 14.9627821843, 14.8621462595, ],
+            ["Average Departure Delay", 27.0, 29.8544152745, 21.5907258065, 24.2223320158, 22.8, 21.8839285714, 22.3219730942, 15.8562091503, 19.6905737705, 8.76666666667, 18.2574904055, 15.3431771894, 17.1830882353, 16.126394052, 16.4954954955, 14.3670588235, 17.215613594, 15.8153613871, 16.1079926785, 15.1389745027, ],
+        ],
+        type: "bar",
+        groups: [
+            ["Average Arrival Delay", "Average Departure Delay"]
+        ]
+    },
+    axis: {
+        x: {
+            type: "categorized",
         }
     }
 });
