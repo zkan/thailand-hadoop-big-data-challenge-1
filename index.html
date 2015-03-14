@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link href="c3/c3.css" type="text/css">
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Thailand Hadoop Big Data Challenge #1</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="chart"></div>
+        </div>
+    </div>
+</div>
+
+<script src="jquery/jquery-2.1.3.min.js" charset="utf-8"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="d3/d3.min.js" charset="utf-8"></script>
+<script src="c3/c3.min.js"></script>
+<script>
+var chart = c3.generate({
+    bindto: '#chart',
+    data: {
+        x: 'x',
+        columns: [
+            ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
+            ['data1', 30, 200, 100, 400, 150, 250],
+            ['data2', 130, 340, 200, 500, 250, 350]
+        ]
+    },
+    axis: {
+        x: {
+            type: 'timeseries',
+            tick: {
+                format: '%Y-%m-%d'
+            }
+        }
+    }
+});
+
+setTimeout(function () {
+    chart.load({
+        columns: [
+            ['data3', 400, 500, 450, 700, 600, 500]
+        ]
+    });
+}, 1000);
+</script>
+</body>
+</html>
