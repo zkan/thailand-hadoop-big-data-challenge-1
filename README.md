@@ -99,3 +99,26 @@ ACK,28.6038186158,29.8544152745
 5,10.9534400796,12.1011089613
 ...
 ```
+
+## Find Flight Paths
+
+**On Local:** `cat data/2008_with_1000_first_records.csv | python code/graph_data_mapper.py | sort | python code/graph_data_reducer.py`
+
+**On Hadoop:** `doop jar ~/contrib/streaming/hadoop-streaming.jar -file graph_data_mapper.py -mapper graph_data_mapper.py -file graph_data_reducer.py -reducer graph_data_reducer.py -input /user/Kan/data/2008.csv -jobconf mapred.reduce.tasks=1 -output /user/Kan/graph_data_results`
+
+*Note:* The command above is run under the same directory with the code.
+
+**Results from Hadoop:**
+
+```
+ABE,ATL,792
+ABE,BHM,339
+ABE,CLE,481
+ABE,CLT,503
+ABE,CVG,424
+...
+```
+
+To find a path, run `python code/find_flight_paths.py`
+
+*Note:* The origin and destination are hardcoded in the code.
